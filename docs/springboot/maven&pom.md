@@ -20,7 +20,8 @@
 |version|此项目生成的工件的当前版本|
 |name|项目的全名|
 |description|项目的详细说明，每当需要描述项目时，例如在网站上，Maven 都会使用。虽然可以将此元素指定为 CDATA 以允许在说明中使用 HTML 标记，但不建议允许纯文本表示。如果需要修改生成的网站的索引页，则可以指定自己的索引页，而不是调整此文本|
-|properties/key=value*|可在整个 POM 中用作替换的属性，如果启用，则用作资源中的筛选器的属性,格式是 < name > value < /name >|
+|properties/key=value*|可在整个 POM 中用作替换的属性，如果启用，则用作资源中的筛选器的属性,格式是 `<name> value </name >`|
+
 ```xml
 <modelVersion>4.0.0</modelVersion>
     <parent>

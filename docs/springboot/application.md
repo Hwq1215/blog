@@ -100,5 +100,5 @@ spring:
 
 ```yaml
     person:
-        address: "US/LA"
+        address: "US\LA"
 ```
