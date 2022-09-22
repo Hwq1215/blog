@@ -1,6 +1,6 @@
 # SpringBoot 接受 json 和发送 json
 > springboot常常需要收发json格式的请求；就springboot作为后端来说，前端放在body的数据通常是json格式的；而springboot微服务也常用json格式数据。
-## 阿里的包pom.xml
+## 依赖
 ```xml
 <dependency>
     <groupId>com.alibaba</groupId>

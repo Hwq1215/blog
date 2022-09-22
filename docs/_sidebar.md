@@ -4,3 +4,4 @@
 * [SpringBoot](springboot/)
 * [PyTroch](pytorch/)
 * [Markdown](markdown/)
+* [jquery](jquery/)

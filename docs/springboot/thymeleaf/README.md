@@ -72,7 +72,7 @@ public class indexController {
 
 
 # th:each
->用于取一组元素，并且可以简化html的编写，每组元素可以再生成一段html
+>用于取一组元素，并且可以简化html的编写，每组元素可以再生成一段重复的标签
 
 ## 用法
 `th:each="obj:${objs}"`
@@ -110,7 +110,7 @@ public class indexController {
 
 
 
-# th:onclick
+# 按钮事件th:onclick 
 >THYMELEAF 3.0.10更改日志
 >*改进了HTML事件处理程序属性（th：on ），以允许将其值作为内联JavaScript的片段（使用JAVASCRIPT模板模式）进行处理。
 

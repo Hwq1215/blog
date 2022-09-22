@@ -16,7 +16,7 @@ spring.datasource.driver-class-name = com.mysql.cj.jdbc.Driver
 ```
 
 # application.yml | application.yaml
-> 通过冒号连接，相同父级可以写在一起，语法严格，要特别注意:后有空格，比较简洁明了。
+> 通过冒号连接，相同父级可以写在一起，语法严格，要特别注意`:`后有空格，比较简洁明了。
 ```yaml
 #端口暴露
 server:
