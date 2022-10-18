@@ -14,14 +14,26 @@ jQuery 库包含以下功能：
 - AJAX
 
 ## 访问元素
-#### 传统方法
+#### js访问dom方法
 ```js
 var keyName = document.getElementById("keyName-inp").value() //value()可以被替换成text()等标签内部存在的属性
 ```
 #### jquery的方法
 ```js
-
+var keyName = $("#keyName-inp").value();
 ```
 
 ## ajax
 > 常见的使用[https://www.cnblogs.com/wtmb/p/14351648.html]
+
+#### 参数介绍
+- url 
+    请求的url
+- type
+    请求的类型
+- contentType
+    请求数据的类型
+- data
+    请求的数据
+- success：
+    请求成功后的操作
