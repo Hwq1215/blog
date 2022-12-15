@@ -6,6 +6,8 @@
 * [Markdown](markdown/)
 * [jquery](jquery/)
 * [mysql](mysql/)
+* [vue](vue/)
+
 <!-- * [杂项](/mass/) -->
 
 
