@@ -35,14 +35,76 @@ public class WebSocketConfig implements ServletContextInitializer {
         return new ServerEndpointExporter();
     }
 
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        servletContext.addListener(WebAppRootListener.class);
-        servletContext.setInitParameter("org.apache.tomcat.websocket.textBufferSize","52428800");
-        servletContext.setInitParameter("org.apache.tomcat.websocket.binaryBufferSize","52428800");
+}
+```
+## 使用
+使用`@ServerEndPoint注解`和`@Component`注解一个类，实现客户端和服务端的多种通信
+```java
+package com.example.websocketdemo.serve;
+
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
+
+@ServerEndpoint("/web/socket/{userid}")
+@Component
+public class CalService {
+    //定义一个静态的map，用来存放每个客户端对应的MyWebSocket对象
+    private static ConcurrentHashMap<String,CalService> webSocketMap = new ConcurrentHashMap<>();
+    private Session session;
+    private String userid;
+
+    @OnOpen
+    public void onOpen(Session session, @PathParam("userid") String userid) throws Exception{
+        if(webSocketMap.get(userid)!=null) {
+            webSocketMap.get(userid).sendMessage("您的账号已在其他地方登录");
+            webSocketMap.get(userid).session.close();
+        }else {
+            webSocketMap.put(userid, this);
+        }
+        System.out.println("连接成功:" + userid + "进来了，session编号是" + session.getId());
+    }
+
+    @OnClose
+    public void onClose(Session session){
+        System.out.println(session.getId() + "退出了");
+    }
+
+    @OnMessage
+    public void onMessage(String message, Session session) throws Exception{
+        System.out.println("收到消息：" + message);
+    }
+
+    //传给对应session的用户消息
+    public void sendMessage(String message) throws IOException {
+        this.session.getBasicRemote().sendText(message);
+    }
+
+    //发送信息给指定ID用户，如果用户不在线则返回不在线信息给自己
+    public void sendMessageTo(String message, String toUserid) throws IOException {
+        if(webSocketMap.get(toUserid)!=null) {
+            webSocketMap.get(toUserid).sendMessage(message);
+        }else {
+            this.sendMessage("用户不在线");
+        }
+    }
+
+    //发送信息给所有在线用户
+    public void sendMessageAll(String message) throws IOException {
+        for (String key : webSocketMap.keySet()) {
+            webSocketMap.get(key).sendMessage(message);
+        }
     }
 }
 ```
+
 # 使用自动注入@Autowired报NullPointerException
 > 在@ServerEndpoint注解的WebSocket的处理类中不能直接使用@AutoWired注入,这里我们采用一个SpringUtil工具包手动注入
 ##### SpringUtil
