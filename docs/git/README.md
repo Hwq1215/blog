@@ -1,28 +1,28 @@
 # Git
 分布式的版本控制工具
 ## 将库拉取下来,此时会自动建立仓库
-```sh
+```bash
 git pull "herf"
 ``` 
 ## 建立一个仓库
 
-```sh
+```bash
 cd ./target/master
 git init  # 在master下建立仓库
 ```
 
 ## 创建分支
-```sh
+```bash
 git branch 'new_branch_name'
 ```
 
 ## 切换本仓库的分支
-```sh
+```bash
 git branch 'exist_barch_name'
 ```
 
 ## 设置远程源
-```sh
+```bash
 git remote add -t "barch_name" "remote_name" "remote_url" #新增加一个远程源
 git remote set-url "remote_name" "newurl"
 git remote remove "remote_name"

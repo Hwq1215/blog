@@ -4,7 +4,7 @@
 * [SpringBoot](springboot/)
 <!-- * [PyTroch](pytorch/) -->
 * [Markdown](markdown/)
-* [git](git/)
+* [Git](git/)
 * [jquery](jquery/)
 * [mysql](mysql/)
 * [vue](vue/)
