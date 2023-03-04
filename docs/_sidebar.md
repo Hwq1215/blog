@@ -8,7 +8,8 @@
 * [jquery](jquery/)
 * [mysql](mysql/)
 * [vue](vue/)
-
+* [Linux](linux/)
+* [html&css&js](html&css&js/)
 <!-- * [杂项](/mass/) -->
 
 
