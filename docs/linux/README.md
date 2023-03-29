@@ -46,3 +46,21 @@ nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
+
+#### 如果是vue等动态加载的网页，可能会出显刷新不是index页面而无法访问的问题
+将
+```nginx
+location / {
+		root   html;
+        index  index.html index.htm;
+}
+```
+改成
+```nginx 
+location / {
+		root   html;
+        index  index.html index.htm;
+         
+        try_files $uri $uri/ /index.html;
+}
+```
