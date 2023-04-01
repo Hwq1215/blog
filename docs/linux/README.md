@@ -64,3 +64,44 @@ location / {
         try_files $uri $uri/ /index.html;
 }
 ```
+# yum卸载了怎么办，记一次踩坑
+[可以看看这篇](https://blog.csdn.net/weixin_40605941/article/details/122985982)
+> 预计你应该做了以下类似的操作，我的建议是再做一次，把python和yum都卸载了，然后再重新安装一遍
+```
+rpm -qa|grep python|xargs rpm -ev --allmatches --nodeps ##强制删除已安装程序及其关联
+ 
+whereis python |xargs rm -frv  ##删除所有残余文件 ##xargs，允许你对输出执行其他某些命令
+ 
+whereis python ##验证删除，返回无结果
+```
+
+> 现在，你只有rpm一个包管理器
+### 首先我们需要安装python2，因为yum是基于python2的
+```bash
+cd /usr/local/src
+
+wget https://registry.npmmirror.com/-/binary/python/2.7.15/Python-2.7.15.tgz
+
+tar -zxvf Python-2.7.15.tgz
+
+cd Python-2.7.15
+
+./configure
+
+make && make install
+```
+
+你可能涉及的包
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-urlgrabber-3.10-10.el7.noarch.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-iniparse-0.4-9.el7.noarch.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/yum-3.4.3-168.el7.centos.noarch.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-libs-2.7.5-89.el7.x86_64.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-2.7.5-89.el7.x86_64.rpm 
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-devel-2.7.5-89.el7.x86_64.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-rpm-macros-3-34.el7.noarch.rpm 
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-srpm-macros-3-34.el7.noarch.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python2-rpm-macros-3-34.el7.noarch.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-pycurl-7.19.0-19.el7.x86_64.rpm
+http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/rpm-python-4.11.3-45.el7.x86_64.rpm
+http://mirror.centos.org/centos/7/updates/x86_64/Packages/rpm-python-4.11.3-48.el7_9.x86_64.rpm

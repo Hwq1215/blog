@@ -10,6 +10,7 @@
 * [vue](vue/)
 * [Linux](linux/)
 * [html&css&js](html&css&js/)
+* [计算机基础](base/)
 <!-- * [杂项](/mass/) -->
 
 
