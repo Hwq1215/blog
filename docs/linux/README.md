@@ -64,6 +64,16 @@ location / {
         try_files $uri $uri/ /index.html;
 }
 ```
+## 用nginx进行反向代理
+```sh
+        location /api/ {
+            # add_header Access-Control-Allow-Origin '*';
+            # add_header Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept";
+            # add_header Access-Control-Allow-Methods "GET, POST, OPTIONS"; #将头进行跨域的补充
+            proxy_pass http://43.139.16.40:5006/;
+        }
+```
+这里有个坑，add_header在后端已经配置跨域后，这里是不用加的，加了跨域的话，有可能和前端进行冲突。
 # yum卸载了怎么办，记一次踩坑
 [可以看看这篇](https://blog.csdn.net/weixin_40605941/article/details/122985982)
 > 预计你应该做了以下类似的操作，我的建议是再做一次，把python和yum都卸载了，然后再重新安装一遍
@@ -105,3 +115,34 @@ http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python2-rpm-macros-3-3
 http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/python-pycurl-7.19.0-19.el7.x86_64.rpm
 http://mirrors.163.com/centos/7.9.2009/os/x86_64/Packages/rpm-python-4.11.3-45.el7.x86_64.rpm
 http://mirror.centos.org/centos/7/updates/x86_64/Packages/rpm-python-4.11.3-48.el7_9.x86_64.rpm
+
+
+# 项目更新，重新加载项目的shell脚本(以Python为例)
+```bash
+#! /bin/bash 
+Flask_Path='main.py'
+PID=$(ps -ef | grep $Flask_Path | grep -v grep | awk '{ print $2 }')
+echo $PID
+if [ -z $PID ]
+then
+ echo Application is already stopped
+else
+ echo kill $PID
+ kill -9 $PID
+fi
+sh ./run.sh #这里运行的是启动脚本，可以换成自己的启动脚本
+```
+
+- 重点是这条命令
+```bash
+PID=$(ps -ef | grep $Flask_Path | grep -v grep | awk '{ print $2 }')
+```
+
+- `ps -ef | grep $Flask_Path`帮助我们查找到进程的PID
+- `grep -v grep`过滤掉grep进程
+- `awk '{ print $2 }'`打印出第二列，也就是PID
+
+#### 顺便提一嘴，awk是linux一个很强大的命令，可以用来处理文本，比如说，我们想要查看某个文件的第一列，可以这样
+```bash
+awk '{ print $1 }' filename
+```
