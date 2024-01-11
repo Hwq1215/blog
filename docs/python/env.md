@@ -110,3 +110,40 @@ https://github.com/pyenv/pyenv#installation
 * ### 删除环境
     在不占用环境的情况下，我们把文件夹删除，即可删除环境
   
+# linux下的环境配置
+## 准备工作
+```
+首先要确认目标linux服务器已经安装了 wget，curl等工具方便我们从git上拉去pyenv的项目，如果没有安装对应的工具，需要切换到root用户下安装。
+记住要先切回个人目录下再进行对应操作
+```
+
+### 安装git
+```cmd
+yum install git
+```
+
+### 更新yum源
+```cmd
+sudo yum update
+```
+
+### 安装pyenv环境管理python版本
+```cmd
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+#使配置生效
+source ~/.bashrc
+```
+
+### 安装pip
+```cmd
+sudo yum install python-pip
+```
+
+### 安装python版本
+```cmd
+pyenv install 3.10.11
+```
