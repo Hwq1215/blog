@@ -25,85 +25,12 @@
     container.classList.add("active");
     container.classList.remove("active");
 ```
-## 3.开关
-完整的html代码如下
-```html preview
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>开灯控件</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* 设置 body 高度为视口高度，以确保垂直居中 */
-            margin: 0;
-        }   
-        .main-container{
-            text-align: center; 
-        }
-        .inside{
-            width: 10vh;
-            height: 4.2vh;
-            border: 0.4vh solid rgb(67, 65, 65);
-            border-radius: 2.5vh;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 0;
-            align-content: center;
-            background-color: white;
-            transition:
-                background-color 0.5s;
-        }
-        .inside.active{
-            background-color: #95d602;
-        }
-        .circle{
-            margin-left: 0.2vh;
-            width: 3.0vh;
-            height: 3.0vh;
-            border: 0.5vh solid rgb(67, 65, 65);
-            border-radius: 3vh;
-            background-color: #b4b4b4;
-            transition:
-                background-color 0.5s,
-                margin-left 0.3s;
-        }
+## 3.一个丝滑的开关
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="dyrmZoM" data-user="hwq1215" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/hwq1215/pen/dyrmZoM">
+  light Toggle</a> by hwq (<a href="https://codepen.io/hwq1215">@hwq1215</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-        .circle.active{
-            background-color: #e1ffc3;
-            margin-left: 6vh;
-        }
 
-    </style>
-</head>
-<body>
-    <div class="main-container">
-        <div class="inside">
-            <div class="circle">
-
-            </div>
-        </div>
-    </div>
-    <script>
-        const container = document.querySelector(".inside");
-        const circle = document.querySelector(".circle");
-        
-        //
-        function toggleChange(){
-            container.classList.toggle('active');
-            circle.classList.toggle("active");
-        }
-
-        container.addEventListener("mousedown",()=>{
-            toggleChange();
-        })
-    </script>
-    
-</body>
-</html>
-```
