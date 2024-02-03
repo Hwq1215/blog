@@ -28,18 +28,19 @@
   .logo {
     width: 300px;
     height: auto;
+    display: flex;
   }
 }
 
 .logo img {
-  margin-top: 0px;
-  margin-left: -20px;
-  max-height: 36px;
-  margin-right: 5px;
-
+  margin-bottom: -10px;
+  margin-left: 0px;
+  max-height: 47px;
+  margin-right: 2px;
 }
 
 .logo span {
+  margin-top: 8px;
   font-size: 30px;
   font-weight: 800;
   color: #012970;
