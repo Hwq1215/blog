@@ -17,25 +17,30 @@
     6. 配置界面
 
 ### 网络配置
-点击VMware首选项的**虚拟网络编辑器**
+- 点击VMware首选项的**虚拟网络编辑器**
 
-![编辑虚拟网卡](./imgs/Snipaste_2024-10-24_13-37-03.png)
+    ![编辑虚拟网卡](./imgs/Snipaste_2024-10-24_13-37-03.png)
 
-检查VMnet8(NAT模式)的**子网IP**和**子网掩码**
-![检查](./imgs/Snipaste_2024-10-24_13-38-52.png)
-这里的子网IP是`192.168.220.0`,子网掩码是`255.255.255.0`
+- 检查VMnet8(NAT模式)的**子网IP**和**子网掩码**
+
+    ![检查](./imgs/Snipaste_2024-10-24_13-38-52.png)
+
+    这里的子网IP是`192.168.220.0`,子网掩码是`255.255.255.0`
 
 ### 配置的选择
 - 内存：6GB+
 - 硬盘：20GB+
 - CPU：至少1核心
 - 网络：NAT模式（VMnet8）保证3台机器在同一个虚拟网络下
+
 ![配置](./imgs/Snipaste_2024-10-24_13-39-39.png)
 
 ### 开机后需要做的一些事
 #### 设置网络
-先找到接口名称     
+- 先找到接口名称   
+
 ![接口名称](./imgs/Snipaste_2024-10-24_14-51-37.png)
+
 这里是eno16777736
 去到相应的接口进行配置的修改
 ```bash
@@ -95,9 +100,8 @@ visudo
 ```bash
 hadoop ALL=(ALL) ALL
 ```
+
 ![visudo](./imgs/Snipaste_2024-10-24_15-34-47.png)
-
-
 ## 环境配置
 ### 所有节点都需要的配置
 #### java安装和环境变量配置
@@ -114,6 +118,7 @@ wget https://mirrors.tuna.tsinghua.edu.cn/Adoptium/8/jdk/x64/linux/OpenJDK8U-jdk
 mv ./OpenJDK8U-jdk_x64_linux_hotspot_8u422b05.tar.gz /usr/java
 cd /usr/java
 ```
+
 解压文件夹
 ```bash
 tar -zxvf  ./OpenJDK8U-jdk_x64_linux_hotspot_8u422b05.tar.gz
@@ -149,7 +154,7 @@ ssh-keygen
 ssh-copy-id hadoop@slave1
 ```
 **注意master，slave1，slave2三个都要配置一遍**
-#### 
+
 ### master节点的mysql的配置与安装
 1. [配置阿里云yum源](https://blog.csdn.net/g310773517/article/details/140321025)
 2. 添加mysql的信息
@@ -185,7 +190,9 @@ ssh-copy-id hadoop@slave1
         FLUSH PRIVILEGES;
         quit;
         ```
+
 ### 时区同步
+
 #### master节点
 安装ntp,打开ntp配置文件
 ```bash
@@ -218,8 +225,8 @@ service chronyd restart
 chronyc sources
 ```
 ## Hadoop的安装和配置
-- [jdk1.8](https://mirrors.tuna.tsinghua.edu.cn/Adoptium/8/jdk/x64/linux/OpenJDK8U-jdk_x64_linux_hotspot_8u432b06.tar.gz)
-- [Hadoop2.7.3](https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz)   
+- [jdk1.8](https://mirrors.tuna.tsinghua.edu.cn/Adoptium/8/jdk/x64/linux/)
+- [Hadoop2.7.3](https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/)   
 - MySQL57
 
 获得Hadoop tar格式压缩包后，解压压缩包
