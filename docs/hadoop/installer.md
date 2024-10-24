@@ -218,7 +218,7 @@ service chronyd restart
 chronyc sources
 ```
 ## Hadoop的安装和配置
-- [jdk1.8](https://mirrors.tuna.tsinghua.edu.cn/Adoptium/8/jdk/x64/linux/OpenJDK8U-jdk_x64_linux_hotspot_8u422b05.tar.gz)
+- [jdk1.8](https://mirrors.tuna.tsinghua.edu.cn/Adoptium/8/jdk/x64/linux/OpenJDK8U-jdk_x64_linux_hotspot_8u432b06.tar.gz)
 - [Hadoop2.7.3](https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz)   
 - MySQL57
 
