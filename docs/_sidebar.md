@@ -12,6 +12,7 @@
 * [Linux](linux/)
 * [html&css&js](html&css&js/)
 * [计算机基础](base/)
+* [大数据](hadoop/)
 <!-- * [杂项](/mass/) -->
 
 
