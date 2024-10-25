@@ -105,7 +105,7 @@ hadoop ALL=(ALL) ALL
 ## 环境配置
 ### 所有节点都需要的配置
 #### java安装和环境变量配置
-建立一个java目录
+建立一个`java`目录
 ```bash
 mkdir /usr/java
 ```
@@ -123,7 +123,7 @@ cd /usr/java
 ```bash
 tar -zxvf  ./OpenJDK8U-jdk_x64_linux_hotspot_8u422b05.tar.gz
 ```
-打开~/.bashrc配置java环境变量
+打开~/.bashrc配置`java`环境变量
 ```bash
 vi ~/.bashrc
 ```
@@ -132,6 +132,10 @@ vi ~/.bashrc
 export JAVA_HOME=/usr/java/jdk8u422-b05
 export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$PATH:$JAVA_HOME/bin
+```
+激活环境变量
+```bash
+source ~/.bashrc
 ```
 
 #### 关闭防火墙
@@ -364,8 +368,8 @@ chronyc sources
     ```
 - 使用下面的命令将hadoop文件复制到其他节点，本实验中为slave1和slave2，命令如下
   ```bash
-    [hadoop@master ~]$ scp-r hadoop-2.7.3 hadoop@slave1:/home/hadoop/
-    [hadoop@master ~]$ scp-r hadoop-2.7.3 hadoop@slave2:/home/hadoop/
+    [hadoop@master ~]$ scp -r hadoop-2.7.3 hadoop@slave1:/home/hadoop/
+    [hadoop@master ~]$ scp -r hadoop-2.7.3 hadoop@slave2:/home/hadoop/
   ```
 - 将下面的代码追加到**3个节点**`~/.bashrc`的末尾
   ```bash
@@ -399,9 +403,9 @@ chronyc sources
   
         ![slave的jps](./imgs/Snipaste_2024-10-24_22-05-12.png)
 
-    - 在master输入`bin/hadoop dfsadmin-report`检查`hadoop`集群
+    - 在master输入`bin/hadoop dfsadmin -report`检查`hadoop`集群
         ```bash
-        /home/hadoop/hadoop-2.7.3/bin/hadoop dfsadmin-report
+        /home/hadoop/hadoop-2.7.3/bin/hadoop dfsadmin -report
         ```
 
         ![hadoop-show](./imgs/Snipaste_2024-10-24_22-05-24.png)

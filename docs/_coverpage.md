@@ -8,6 +8,6 @@
 - 超越  Beyond
 
 [GitHub](https://github.com/docsifyjs/docsify/)
-[ 开  始  ](/ReadME.md)
+[ 开  始  ](/README.md)
 <!-- background color -->
 ![color](#f0f0f0)
